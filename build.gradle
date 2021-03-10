@@ -29,6 +29,7 @@ dependencies {
 	implementation 'io.eventuate.tram.core:eventuate-tram-spring-jdbc-kafka:0.24.0.RELEASE'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'com.google.guava:guava:30.0-jre'
+	implementation 'com.mitralabs.customer:domainutils:1.0.0'
 	runtimeOnly 'mysql:mysql-connector-java'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
