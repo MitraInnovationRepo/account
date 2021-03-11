@@ -1,4 +1,4 @@
-package com.mitralabs.customer.dao;
+package com.mitralabs.account.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +19,7 @@ public class QueryDao {
 			throws DuplicateKeyException {
 		try {
 			jdbcTemplate.update(
-					"INSERT INTO customer(aggregateid, firstname, lastname, address , email) VALUES (?, ?, ?, ?, ?)",
+					"INSERT INTO account(aggregateid, firstname, lastname, address , email) VALUES (?, ?, ?, ?, ?)",
 					aggregateId, firstname, lastname, address, email);
 
 		} catch (DuplicateKeyException e) {

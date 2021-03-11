@@ -1,4 +1,4 @@
-package com.mitralabs.customer;
+package com.mitralabs.account;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,10 +12,10 @@ import io.eventuate.local.java.spring.javaclient.driver.EventuateDriverConfigura
 @Configuration
 @Import({ EventuateDriverConfiguration.class, BackendConfiguration.class })
 @EnableAutoConfiguration
-public class CustomerApplication {
+public class AccountApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CustomerApplication.class, args);
+		SpringApplication.run(AccountApplication.class, args);
 	}
 
 }

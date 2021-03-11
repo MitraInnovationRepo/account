@@ -1,11 +1,11 @@
-package com.mitralabs.customer;
+package com.mitralabs.account;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import com.mitralabs.customer.command.CustomerCommand;
-import com.mitralabs.customer.service.CustomerService;
+import com.mitralabs.account.command.AccountCommand;
+import com.mitralabs.account.service.AccountService;
 
 import io.eventuate.AggregateRepository;
 import io.eventuate.EventuateAggregateStore;
@@ -17,16 +17,14 @@ import io.eventuate.tram.spring.jdbckafka.TramJdbcKafkaConfiguration;
 @EnableEventHandlers
 public class BackendConfiguration {
 
-
 	@Bean
-	public AggregateRepository<CustomerAggregate, CustomerCommand> aggregateRepository(
+	public AggregateRepository<AccountAggregate, AccountCommand> aggregateRepository(
 			EventuateAggregateStore eventStore) {
-		return new AggregateRepository<>(CustomerAggregate.class, eventStore);
+		return new AggregateRepository<>(AccountAggregate.class, eventStore);
 	}
 
 	@Bean
-	public CustomerService customerService(
-			AggregateRepository<CustomerAggregate, CustomerCommand> aggregateRepository) {
-		return new CustomerService(aggregateRepository);
+	public AccountService customerService(AggregateRepository<AccountAggregate, AccountCommand> aggregateRepository) {
+		return new AccountService(aggregateRepository);
 	}
 }

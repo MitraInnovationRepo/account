@@ -1,4 +1,4 @@
-package com.mitralabs.customer.error;
+package com.mitralabs.account.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

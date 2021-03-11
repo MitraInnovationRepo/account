@@ -1,4 +1,6 @@
-package com.mitralabs.account.error;
+package com.mitralabs.account.dto;
+
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +11,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SuccessfulResponse extends Response {
+public class AccountDTO {
 
-	private String id;
+	private String accountType;
+	private Date createdDate;
+	private String status;
+
 
 }

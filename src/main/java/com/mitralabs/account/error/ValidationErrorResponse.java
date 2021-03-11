@@ -1,4 +1,4 @@
-package com.mitralabs.customer.error;
+package com.mitralabs.account.error;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.mitralabs.customer;
+package com.mitralabs.account;
 
 import javax.sql.DataSource;
 
