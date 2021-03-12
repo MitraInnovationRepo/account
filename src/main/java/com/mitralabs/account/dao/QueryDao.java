@@ -19,7 +19,7 @@ public class QueryDao {
 			throws DuplicateKeyException {
 		try {
 			jdbcTemplate.update(
-					"INSERT INTO account(ownerid,accountid, accountType, createdAt) VALUES (?, ?, ?, ?, ?)",
+					"INSERT INTO account(ownerid,accountid, accountType, createdAt) VALUES (?, ?, ?, ?)",
 					ownerId, accountId, accountType, createdAt);
 
 		} catch (DuplicateKeyException e) {
