@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import com.mitralabs.account.command.AccountCommand;
+import com.mitralabs.account.eventhandler.AccountEventHandler;
 import com.mitralabs.account.service.AccountService;
 
 import io.eventuate.AggregateRepository;
@@ -21,6 +22,11 @@ public class BackendConfiguration {
 	public AggregateRepository<AccountAggregate, AccountCommand> aggregateRepository(
 			EventuateAggregateStore eventStore) {
 		return new AggregateRepository<>(AccountAggregate.class, eventStore);
+	}
+
+	@Bean
+	public AccountEventHandler accountEventHandler() {
+		return new AccountEventHandler();
 	}
 
 	@Bean
