@@ -27,6 +27,7 @@ public class AccountEventHandler {
 			accountService.createAccount(event.getEntityId(), "Test", cEvent.getAccountType(), "Test");
 		} catch (Exception e) {
 
+			e.printStackTrace();
 			log.error("Error creating account", e.getMessage());
 		}
 	}
