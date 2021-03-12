@@ -10,7 +10,7 @@ import io.eventuate.EventHandlerMethod;
 import io.eventuate.EventSubscriber;
 import lombok.extern.slf4j.Slf4j;
 
-@EventSubscriber
+@EventSubscriber(id = "accountEventHandlers")
 @Slf4j
 public class AccountEventHandler {
 
