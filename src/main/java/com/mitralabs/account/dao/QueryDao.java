@@ -15,16 +15,16 @@ public class QueryDao {
 	@Qualifier("queryJdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 
-	public void insertCustomer(String aggregateId, String firstname, String lastname, String address, String email)
+	public void insertAccount(String ownerId, String accountId, String accountType, String createdAt)
 			throws DuplicateKeyException {
 		try {
 			jdbcTemplate.update(
-					"INSERT INTO account(aggregateid, firstname, lastname, address , email) VALUES (?, ?, ?, ?, ?)",
-					aggregateId, firstname, lastname, address, email);
+					"INSERT INTO account(ownerid,accountid, accountType, createdAt) VALUES (?, ?, ?, ?, ?)",
+					ownerId, accountId, accountType, createdAt);
 
 		} catch (DuplicateKeyException e) {
-			log.warn("customer [{}] duplicated", email);
-			throw new DuplicateKeyException("customer duplicated :" + email);
+			log.warn("accountId [{}] duplicated", accountId);
+			throw new DuplicateKeyException("accountId duplicated :" + accountId);
 		}
 	}
 }

@@ -29,19 +29,20 @@ public class AccountService {
 		this.aggregateRepository = aggregateRepository;
 	}
 
-	public String createAccount(AccountDTO accountDTO) throws Exception {
+	public String createAccount(String ownerId, String accountId, String accountType, String createdAt)
+			throws Exception {
 
 		try {
+
+			queryDao.insertAccount(ownerId, accountId, accountType, createdAt);
+
 			String aggregateId = aggregateRepository
-					.save(new AccountCreatedCommand("SAVINGS"),
+					.save(new AccountCreatedCommand(accountType),
 							Optional.of(new SaveOptions().withEventMetadata(
 									ImmutableMap.of("eventTime", String.valueOf(new Date().getTime())))))
 					.get().getEntityId();
 
-			log.info("customer [{}] added", aggregateId);
-
-//			queryDao.insertAccount(aggregateId, customerDTO.getFirstName(), customerDTO.getLastName(),
-//					customerDTO.getAddress(), customerDTO.getEmail());
+			log.info("account [{}] added", aggregateId);
 
 			return aggregateId;
 
