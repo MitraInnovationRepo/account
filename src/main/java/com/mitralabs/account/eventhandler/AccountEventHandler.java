@@ -19,7 +19,7 @@ public class AccountEventHandler {
 
 	@EventHandlerMethod
 	public void customerCreatedEvent(DispatchedEvent<CustomerCreatedEvent> event) {
-		log.trace("CustomerCreatedEvent recived", event.getEntityId());
+		log.info("CustomerCreatedEvent recived", event.getEntityId());
 
 		CustomerCreatedEvent cEvent = event.getEvent();
 
