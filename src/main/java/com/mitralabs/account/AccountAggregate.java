@@ -18,11 +18,16 @@ public class AccountAggregate extends ReflectiveMutableCommandProcessingAggregat
 	private AccountDTO account;
 
 	public List<Event> process(AccountCreatedCommand cmd) {
-		return EventUtil.events(new AccountCreatedEvent(cmd.getAccountType()));
+		return EventUtil.events(new AccountCreatedEvent(cmd.getOwnerId(), cmd.getAccountId(), cmd.getAccountType(),
+				cmd.getStatus(), cmd.getCreatedAt()));
 	}
 
 	public void apply(AccountCreatedEvent event) {
 		account = new AccountDTO();
+		account.setOwnerId(event.getOwnerId());
+		account.setAccountId(event.getAccountId());
 		account.setAccountType(event.getAccountType());
+		account.setStatus(event.getStatus());
+		account.setCreatedAt(event.getCreatedAt());
 	}
 }

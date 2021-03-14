@@ -29,15 +29,19 @@ public class AccountService {
 		this.aggregateRepository = aggregateRepository;
 	}
 
-	public String createAccount(String ownerId, String accountId, String accountType, String createdAt)
-			throws Exception {
+	public String createAccount(String ownerId, String accountType) throws Exception {
 
 		try {
+
+			Date createdAt = getDate();
+			String accountId = getRandomAccountId();
+
+			String status = "ACTIVE";
 
 			queryDao.insertAccount(ownerId, accountId, accountType, createdAt);
 
 			String aggregateId = aggregateRepository
-					.save(new AccountCreatedCommand(accountType),
+					.save(new AccountCreatedCommand(ownerId, accountId, accountType, status, createdAt),
 							Optional.of(new SaveOptions().withEventMetadata(
 									ImmutableMap.of("eventTime", String.valueOf(new Date().getTime())))))
 					.get().getEntityId();
@@ -49,6 +53,16 @@ public class AccountService {
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
+	}
+
+	private String getRandomAccountId() {
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		return String.valueOf(number);
+	}
+
+	private Date getDate() {
+
+		return new Date();
 	}
 
 	public AccountDTO getAccount(String aggregateId) throws Exception {

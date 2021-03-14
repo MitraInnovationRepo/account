@@ -24,7 +24,7 @@ public class AccountEventHandler {
 		CustomerCreatedEvent cEvent = event.getEvent();
 
 		try {
-			accountService.createAccount(event.getEntityId(), "Test", cEvent.getAccountType(), "Test");
+			accountService.createAccount(event.getEntityId(), cEvent.getAccountType());
 		} catch (Exception e) {
 
 			e.printStackTrace();

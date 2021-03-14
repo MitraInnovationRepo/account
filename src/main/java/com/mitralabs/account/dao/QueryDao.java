@@ -1,5 +1,7 @@
 package com.mitralabs.account.dao;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DuplicateKeyException;
@@ -15,11 +17,10 @@ public class QueryDao {
 	@Qualifier("queryJdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 
-	public void insertAccount(String ownerId, String accountId, String accountType, String createdAt)
+	public void insertAccount(String ownerId, String accountId, String accountType, Date createdAt)
 			throws DuplicateKeyException {
 		try {
-			jdbcTemplate.update(
-					"INSERT INTO account(ownerid,accountid, accountType, createdAt) VALUES (?, ?, ?, ?)",
+			jdbcTemplate.update("INSERT INTO account(ownerid,accountid, accountType, createdAt) VALUES (?, ?, ?, ?)",
 					ownerId, accountId, accountType, createdAt);
 
 		} catch (DuplicateKeyException e) {

@@ -13,9 +13,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AccountDTO {
 
+	private String ownerId;
+	private String accountId;
 	private String accountType;
-	private Date createdDate;
 	private String status;
-
+	private Date createdAt;
 
 }
